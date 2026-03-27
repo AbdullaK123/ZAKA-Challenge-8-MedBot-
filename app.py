@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, render_template, Response
 from model import stroke_predictor
 
 app = Flask(__name__)
@@ -6,6 +6,10 @@ app = Flask(__name__)
 @app.errorhandler(Exception)
 def handle_exception(e: Exception) -> tuple[Response, int]:
     return jsonify({"error": str(e)}), 400
+
+@app.route("/")
+def index() -> str:
+    return render_template("index.html")
 
 @app.route("/health")
 def get_health() -> Response:

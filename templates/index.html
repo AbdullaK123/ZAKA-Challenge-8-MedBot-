@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Stroke Risk Predictor</h1>
+        <p>Enter patient information to assess stroke risk</p>
+    </div>
+    <div class="main-content">
+        <form class="input-form" id="predict-form">
+            <div class="form-field number-field">
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number" min="0" max="120" required />
+            </div>
+            <div class="form-field checkbox-field">
+                <label for="ever_married">Ever Married?</label>
+                <input id="ever_married" name="ever_married" type="checkbox" />
+            </div>
+            <div class="form-field select-field">
+                <label for="smoking_status">Smoking Status</label>
+                <select id="smoking_status" name="smoking_status" required>
+                    <option value="Unknown">Unknown</option>
+                    <option value="never smoked">Never Smoked</option>
+                    <option value="formerly smoked">Formerly Smoked</option>
+                    <option value="smokes">Smokes</option>
+                </select>
+            </div>
+            <div class="form-field checkbox-field">
+                <label for="heart_disease">Heart Disease?</label>
+                <input id="heart_disease" name="heart_disease" type="checkbox" />
+            </div>
+            <div class="form-field checkbox-field">
+                <label for="hypertension">Hypertension?</label>
+                <input id="hypertension" name="hypertension" type="checkbox" />
+            </div>
+            <button type="submit" class="submit-btn">Predict</button>
+        </form>
+        <div id="result" class="result hidden">
+            <h2>Prediction Result</h2>
+            <div class="result-body">
+                <p class="predicted-class" id="predicted-class"></p>
+                <p class="predicted-probability">Probability: <span id="predicted-probability"></span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
