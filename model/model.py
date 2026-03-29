@@ -9,6 +9,7 @@ from schemas import ModelInput, PredictionResponse
 MODEL_DIR = Path(__file__).parent
 
 class StrokePredictor:
+    
     preprocessor = joblib.load(MODEL_DIR / "preprocessor.joblib")
     model = keras.saving.load_model(MODEL_DIR / "model.keras")
     logger = logging.getLogger(__name__)
